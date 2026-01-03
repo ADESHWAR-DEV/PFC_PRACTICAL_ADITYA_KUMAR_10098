@@ -1,0 +1,52 @@
+// ADITYA KUMAR 10098
+#include <stdio.h>
+
+int main() {
+    int rows, cols, i, j;
+    int max, min, diagSum = 0;
+
+    printf("Enter rows and columns: ");
+    scanf("%d %d", &rows, &cols);
+
+    int matrix[rows][cols];
+
+    printf("Enter elements of the matrix:\n");
+    for (i = 0; i < rows; i++) {
+        for (j = 0; j < cols; j++) {
+            scanf("%d", &matrix[i][j]);
+        }
+    }
+
+    max = matrix[0][0];
+    min = matrix[0][0];
+
+    for (i = 0; i < rows; i++) {
+        int rowSum = 0;
+        for (j = 0; j < cols; j++) {
+            if (matrix[i][j] > max) {
+                max = matrix[i][j];
+            }
+            if (matrix[i][j] < min) {
+                min = matrix[i][j];
+            }
+
+            rowSum += matrix[i][j];
+
+            if (i == j) {
+                diagSum += matrix[i][j];
+            }
+        }
+        printf("Sum of row %d: %d\n", i + 1, rowSum);
+    }
+
+    printf("Maximum element: %d\n", max);
+    printf("Minimum element: %d\n", min);
+    
+    if (rows == cols) {
+        printf("Sum of diagonal elements: %d\n", diagSum);
+    } else {
+        printf("Diagonal sum not possible (Not a square matrix)\n");
+    }
+
+    return 0;
+}

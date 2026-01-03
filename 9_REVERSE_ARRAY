@@ -1,0 +1,48 @@
+// ADITYA KUMAR 10098
+#include <stdio.h>
+
+int main() {
+    int n, i, temp, sumEven = 0, min, max;
+
+    printf("Enter number of elements: ");
+    scanf("%d", &n);
+
+    int arr[n];
+
+    printf("Enter %d elements: ", n);
+    for (i = 0; i < n; i++) {
+        scanf("%d", &arr[i]);
+    }
+
+    min = arr[0];
+    max = arr[0];
+    for (i = 0; i < n; i++) {
+        if (arr[i] < min) {
+            min = arr[i];
+        }
+        if (arr[i] > max) {
+            max = arr[i];
+        }
+        if (arr[i] % 2 == 0) {
+            sumEven += arr[i];
+        }
+    }
+
+    printf("Max: %d\n", max);
+    printf("Min: %d\n", min);
+    printf("Sum of even elements: %d\n", sumEven);
+
+    for (i = 0; i < n / 2; i++) {
+        temp = arr[i];
+        arr[i] = arr[n - 1 - i];
+        arr[n - 1 - i] = temp;
+    }
+
+    printf("Reversed array: ");
+    for (i = 0; i < n; i++) {
+        printf("%d ", arr[i]);
+    }
+    printf("\n");
+
+    return 0;
+}
